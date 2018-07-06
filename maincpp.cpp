@@ -54,7 +54,7 @@ void test_binary_tree_node()
 	_6->set_right(13);
 	_7->set_right(16);
 	_8->set_left(30);
-	cout << root->is_root() << " " << root->is_left() << " " << root->is_right() << " " << root->is_leaf() << endl;
+	/*cout << root->is_root() << " " << root->is_left() << " " << root->is_right() << " " << root->is_leaf() << endl;
 	cout << _1->is_root() << " " << _1->is_left() << " " << _1->is_right() << " " << _1->is_leaf() << endl;
 	cout << _2->is_root() << " " << _2->is_left() << " " << _2->is_right() << " " << _2->is_leaf() << endl;
 	cout << _3->is_root() << " " << _3->is_left() << " " << _3->is_right() << " " << _3->is_leaf() << endl;
@@ -62,13 +62,15 @@ void test_binary_tree_node()
 	cout << _5->is_root() << " " << _5->is_left() << " " << _5->is_right() << " " << _5->is_leaf() << endl;
 	cout << _6->is_root() << " " << _6->is_left() << " " << _6->is_right() << " " << _6->is_leaf() << endl;
 	cout << _7->is_root() << " " << _7->is_left() << " " << _7->is_right() << " " << _7->is_leaf() << endl;
-	cout << _8->is_root() << " " << _8->is_left() << " " << _8->is_right() << " " << _8->is_leaf() << endl;
+	cout << _8->is_root() << " " << _8->is_left() << " " << _8->is_right() << " " << _8->is_leaf() << endl;*/
+	
 	Binary_Tree_Node<int> *Post_oreder_succ1 = _1->PostOrderSuccessor();
 	Binary_Tree_Node<int> *Post_oreder_succ2 = _2->PostOrderSuccessor();
 	Binary_Tree_Node<int> *Post_oreder_succ3 = _3->PostOrderSuccessor();
 	Binary_Tree_Node<int> *Post_oreder_succ4 = _4->PostOrderSuccessor();
 	Binary_Tree_Node<int> *Post_oreder_succ5 = _5->PostOrderSuccessor();
 	Binary_Tree_Node<int> *Post_oreder_succ6 = _6->PostOrderSuccessor();
+
 	Binary_Tree_Node<int> *In_oreder_succ7 = _7->InOrderSuccessor();
 	Binary_Tree_Node<int> *In_oreder_succ1 = _1->InOrderSuccessor();
 	Binary_Tree_Node<int> *In_oreder_succ2 = _2->InOrderSuccessor();
@@ -77,6 +79,17 @@ void test_binary_tree_node()
 	Binary_Tree_Node<int> *In_oreder_succ5 = _5->InOrderSuccessor();
 	Binary_Tree_Node<int> *In_oreder_succ6 = _6->InOrderSuccessor();
 	Binary_Tree_Node<int> *In_oreder_succ7 = _7->InOrderSuccessor();
+
+	Binary_Tree_Node<int> *Pre_oreder_succ1 = _1->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ2 = _2->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ3 = _3->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ4 = _4->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ5 = _5->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ6 = _6->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ7 = _7->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ8 = _8->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ9 = _7->get_left()->PreOrderSuccessor();
+	Binary_Tree_Node<int> *Pre_oreder_succ10 = _7->get_right()->PreOrderSuccessor();
 }
 
 int main()

@@ -20,14 +20,15 @@ public:
 	bool is_root();
 	bool is_left();
 	bool is_right();
+	bool is_alone();
 	Binary_Tree_Node<T> * LeftMostOfRightSubTree();
 	Binary_Tree_Node<T> * RightMostOfLeftSubTree();
 	Binary_Tree_Node<T> * InOrderSuccessor();
-	Binary_Tree_Node<T> * InOrderpredecessor();
+	//Binary_Tree_Node<T> * InOrderpredecessor();
 	Binary_Tree_Node<T> * PreOrderSuccessor();
-	Binary_Tree_Node<T> * PreOrderpredecessor();
+	//Binary_Tree_Node<T> * PreOrderpredecessor();
 	Binary_Tree_Node<T> * PostOrderSuccessor();
-	Binary_Tree_Node<T> * PostOrderpredecessor();
+	//Binary_Tree_Node<T> * PostOrderpredecessor();
 private:
 	T data_;
 	Binary_Tree_Node<T> *left_;

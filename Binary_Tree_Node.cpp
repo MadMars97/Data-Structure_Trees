@@ -5,10 +5,10 @@
 
 template<class T>
 Binary_Tree_Node<T>::Binary_Tree_Node
-(T d, Binary_Tree_Node<T>* left, Binary_Tree_Node<T>* right, Binary_Tree_Node<T>* parent,bool left_child,bool right_child)
-	:data_(d),left_(left),right_(right),parent_(parent)
+(T d, Binary_Tree_Node<T>* left, Binary_Tree_Node<T>* right, Binary_Tree_Node<T>* parent, bool left_child, bool right_child)
+	:data_(d), left_(left), right_(right), parent_(parent)
 {
- 	if ((left_child && right_child) || left_child)
+	if ((left_child && right_child) || left_child)
 		parent->set_left(this); //ignore the right_child ->left is higher priority than right
 	else if (right_child)
 		parent->set_right(this);
@@ -38,7 +38,7 @@ Binary_Tree_Node<T>* Binary_Tree_Node<T>::get_right()
 template<class T>
 void Binary_Tree_Node<T>::set_left(T d)
 {
-	Binary_Tree_Node<T> * new_node= new Binary_Tree_Node<T>(d,NULL,NULL,this,true);
+	Binary_Tree_Node<T> * new_node = new Binary_Tree_Node<T>(d, NULL, NULL, this, true);
 }
 
 template<class T>
@@ -51,7 +51,7 @@ void Binary_Tree_Node<T>::set_left(Binary_Tree_Node<T>* BTN_ptr)
 template<class T>
 void Binary_Tree_Node<T>::set_right(T d)
 {
-	Binary_Tree_Node<T> * new_node = new Binary_Tree_Node<T>(d,NULL,NULL,this,false,true);
+	Binary_Tree_Node<T> * new_node = new Binary_Tree_Node<T>(d, NULL, NULL, this, false, true);
 	this->right_ = new_node;
 	new_node->parent_ = this;
 }
@@ -84,19 +84,19 @@ void Binary_Tree_Node<T>::set_data(T d)
 template<class T>
 bool Binary_Tree_Node<T>::is_leaf()
 {
-	return (this->right_==NULL&&this->left_==NULL);
+	return (this->right_ == NULL && this->left_ == NULL);
 }
 
 template<class T>
 bool Binary_Tree_Node<T>::is_root()
 {
-	return this->parent_==NULL;
+	return this->parent_ == NULL;
 }
 
 template<class T>
 bool Binary_Tree_Node<T>::is_left()
 {
-	bool result=false;
+	bool result = false;
 	if (this->parent_ != NULL && this->parent_->left_ == this)
 		result = true;
 	return result;
@@ -109,6 +109,12 @@ bool Binary_Tree_Node<T>::is_right()
 	if (this->parent_ != NULL && this->parent_->right_ == this)
 		result = true;
 	return result;
+}
+
+template<class T>
+bool Binary_Tree_Node<T>::is_alone()
+{
+	return ((this->parent_ == NULL) && (this->left_ == NULL) && (this->right_ == NULL));
 }
 
 template<class T>
@@ -142,6 +148,73 @@ Binary_Tree_Node<T>* Binary_Tree_Node<T>::InOrderSuccessor()
 		my_parent = my_parent->parent_;
 	}
 	return my_parent;
+}
+
+template<class T>
+Binary_Tree_Node<T>* Binary_Tree_Node<T>::PreOrderSuccessor()
+{
+	Binary_Tree_Node<T> *me = this;
+	Binary_Tree_Node<T> *my_parent = this->parent_;
+
+	if (me->left_)
+		return me->left_;
+	if (me->right_)
+		return me->right_;
+
+	//if (me->is_left() || me->is_right())  //AWw STUPID Move ,absolutely this must happent if iam not hava a children
+	//{
+	if (me->is_right()) // end of preorder trav of parents subtree so step up to ancestor
+	{
+		while (my_parent != NULL && my_parent->right_ == me)
+		{
+			me = my_parent;
+			my_parent = my_parent->parent_;
+		}
+	}
+	while (my_parent != NULL && my_parent->right_ == NULL)
+	{
+		me = my_parent;
+		my_parent = my_parent->parent_;
+	}
+	if (me->is_root() || me->is_alone())
+		return NULL;
+	return my_parent->right_;
+	//}
+	/*while (my_parent!=NULL && my_parent->right_==NULL)
+	{
+		me = my_parent;
+		my_parent = my_parent->parent_;
+	}*/
+	//if (me->is_leaf())
+	//{
+	//	if (me->is_left() && my_parent->right_!=NULL)
+	//	{
+	//		return my_parent->right_;
+	//	}
+	//	else if ((me->is_left() && my_parent->right_ == NULL) || me->is_right())
+	//	{
+	//		me = my_parent;
+	//		my_parent = me->parent_;
+	//		while (my_parent->right_ == NULL)
+	//		{
+	//			me = my_parent;
+	//			my_parent = me->parent_;
+	//			if (my_parent != NULL && my_parent->right_ != NULL)
+	//				return my_parent->right_;
+	//			if (my_parent == NULL)
+	//				break;
+	//		}
+	//		return NULL;
+	//		/*if (me->is_root() && me->right_ == NULL)
+	//			return NULL;
+	//		else if (my_parent->right_ != NULL)
+	//			return my_parent->right_;*/
+	//	}
+	//	else
+	//	{
+	//		return
+	//	}
+	//}
 }
 
 template<class T>
